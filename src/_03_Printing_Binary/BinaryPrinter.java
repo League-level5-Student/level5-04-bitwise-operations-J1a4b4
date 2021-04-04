@@ -8,33 +8,41 @@ public class BinaryPrinter {
 	 */
 
 	
-	public void printByteBinary(byte b) {
+	public static void printByteBinary(byte b) {
 		// We first want to print the bit in the one's place
-		
-		// Shift b seven bits to the right
-		
-		// Use the & operator to "mask" the bit in the one's place
-		// This can be done by "anding" (&) it with the value of 1
-		
-		// Print the result using System.out.print (NOT System.out.println)
-		
-		//Use this method to print the remaining 7 bits of b
+		for (int i = 0; i < 8; i++) {
+			// Shift b seven bits to the right
+			byte b1 = (byte) (b >> 7 - i);
+			// Use the & operator to "mask" the bit in the one's place
+			// This can be done by "anding" (&) it with the value of 1
+			b1 = (byte) (b1 & 1);
+			// Print the result using System.out.print (NOT System.out.println)
+			System.out.print(b1);
+			//Use this method to print the remaining 7 bits of b
+		}
 	}
 	
-	public void printShortBinary(short s) {
+	public static void printShortBinary(short s) {
 		// Create 2 byte variables
-		
+		byte a = 0;
+		byte b = 0;
 		// Use bit shifting and masking (&) to save the first
 		// 8 bits of s in one byte, and the second 8 bits of
 		// s in the other byte
-		
+		a = (byte) (s >> 7);
+		//a = (byte) (a & );
+		b = (byte) (s >> 15);
+		//b = (byte) (b & );
 		// Call printByteBinary twice using the two bytes
 		// Make sure they are in the correct order
+		printByteBinary(a);
+		printByteBinary(b);
 	}
 	
-	public void printIntBinary(int i) {
+	public static void printIntBinary(int i) {
 		// Create 2 short variables
-		
+		short a;
+		short b;
 		// Use bit shifting and masking (&) to save the first
 		// 16 bits of i in one short, and the second 16 bits of
 		// i in the other short
@@ -43,11 +51,14 @@ public class BinaryPrinter {
 		// Make sure they are in the correct order
 	}
 	
-	public void printLongBinary(long l) {
+	public static void printLongBinary(long l) {
 		// Use the same method as before to complete this method
 	}
 	
 	public static void main(String[] args) {
 		// Test your methods here
+		printByteBinary((byte) 42);
+		System.out.println();
+		printShortBinary((short) 43690);
 	}
 }

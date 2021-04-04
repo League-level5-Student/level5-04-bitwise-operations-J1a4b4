@@ -56,12 +56,18 @@ public class DecimalToBinary {
 		 * 
 		*/
 		
-		System.out.println( convertDecimalToBinary( 43 ) );
+		System.out.println(convertDecimalToBinary(-43));
 	}
 	
     public static String convertDecimalToBinary(int decimalNum) {
         String binaryStr = "";
-    
+        boolean negative;
+        if (decimalNum < 0) {
+			negative = true;
+			decimalNum = decimalNum * -1;
+		}else {
+			negative = false;
+		}
         do {
             // 1. Logical right shift by 1
             int quotient = decimalNum >>> 1;
@@ -77,7 +83,11 @@ public class DecimalToBinary {
             
         // 3. Repeat until number is 0
         } while( decimalNum != 0 );
-        
+        if (negative) {
+			binaryStr = '1' + binaryStr;
+		}else {
+			binaryStr = '0' + binaryStr;
+		}
         return binaryStr;
     }
 }
