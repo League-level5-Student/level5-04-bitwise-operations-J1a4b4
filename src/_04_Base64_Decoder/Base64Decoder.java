@@ -55,7 +55,15 @@ public class Base64Decoder {
 			ob[i] = convertBase64Char(s.charAt(i));
 		}
 		byte[] b = new byte[3];
-		//boolean[] 
+		boolean[] t = new boolean[24];
+		int counter = 0;
+		for (int i = 0; i < 24; i++) {
+			//t[i] = ob[counter];
+			//extract bits
+			if (i % 4 == 0) {
+				counter++;
+			}
+		}
 		return b;
 	}
 	
