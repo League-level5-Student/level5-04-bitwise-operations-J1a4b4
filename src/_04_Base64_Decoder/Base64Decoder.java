@@ -56,14 +56,9 @@ public class Base64Decoder {
 		}
 		byte[] b = new byte[3];
 		boolean[] t = new boolean[24];
-		int counter = 0;
-		for (int i = 0; i < 24; i++) {
-			//t[i] = ob[counter];
-			//extract bits
-			if (i % 4 == 0) {
-				counter++;
-			}
-		}
+		b[0] = (byte)(ob[0] << 2 + (ob[1] >> 4));
+		b[1] = (byte)(ob[1] << 4 + (ob[2] >> 2));
+		b[2] = (byte)(ob[2] << 6 + ob[3]);
 		return b;
 	}
 	
